@@ -9,8 +9,6 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private int rand1;
-    private int rand2;
     private int points;
 
     @Override
@@ -28,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private void pickRandomNumbers() {
         // pick random numbers
         Random rand = new Random();
-        rand1 = rand.nextInt(10);
+        int rand1 = rand.nextInt(10);
+        int rand2 = 0;
 
         // no duplicate numbers
         while (true) {
@@ -44,7 +43,24 @@ public class MainActivity extends AppCompatActivity {
         rightButton.setText(Integer.toString(rand2));
     }
 
+    private int[] getRandoms() {
+        Button leftButton = (Button) findViewById(R.id.left_button);
+        Button rightButton = (Button) findViewById(R.id.right_button);
+
+        String leftText = leftButton.getText().toString();
+        String rightText = rightButton.getText().toString();
+
+        int rand1 = Integer.parseInt(leftText);
+        int rand2 = Integer.parseInt(rightText);
+
+        return new int[] {rand1, rand2};
+    }
+
     public void leftButtonClick(View view) {
+
+        int rand1 = getRandoms()[0];
+        int rand2 = getRandoms()[1];
+
         if (rand1 > rand2) {
             points++;
         } else {
@@ -56,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void rightButtonClick(View view) {
+
+        int rand1 = getRandoms()[0];
+        int rand2 = getRandoms()[1];
+
         if (rand2 > rand1) {
             points++;
         } else {
