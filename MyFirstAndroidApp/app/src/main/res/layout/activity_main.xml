@@ -14,7 +14,6 @@
 
         android:inputType="text"/>
 
-
     <Button
         android:id="@+id/my_button"
         android:layout_height="wrap_content"
