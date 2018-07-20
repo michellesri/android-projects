@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -56,16 +57,35 @@ public class MainActivity extends AppCompatActivity {
         return new int[] {rand1, rand2};
     }
 
-    public void leftButtonClick(View view) {
+    public void changePoints(String string) {
 
+        int previousPoints = points;
         int rand1 = getRandoms()[0];
         int rand2 = getRandoms()[1];
-
-        if (rand1 > rand2) {
-            points++;
-        } else {
-            points--;
+        if (string == "left") {
+            if (rand1 > rand2) {
+                points++;
+            } else {
+                points--;
+            }
+        } else if (string == "right"){
+            if (rand2 > rand1) {
+                points++;
+            } else {
+                points--;
+            }
         }
+
+        if (previousPoints < points) {
+            Toast.makeText(this, "Nice!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Awww", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void leftButtonClick(View view) {
+
+        changePoints("left");
         TextView tv = (TextView) findViewById((R.id.points_field));
         tv.setText("Points: " + points);
         pickRandomNumbers();
@@ -73,14 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void rightButtonClick(View view) {
 
-        int rand1 = getRandoms()[0];
-        int rand2 = getRandoms()[1];
-
-        if (rand2 > rand1) {
-            points++;
-        } else {
-            points--;
-        }
+        changePoints("right");
         TextView tv = (TextView) findViewById((R.id.points_field));
         tv.setText("Points: " + points);
         pickRandomNumbers();
