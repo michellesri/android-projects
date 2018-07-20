@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         pickRandomNumbers();
 
-
     }
 
     private void pickRandomNumbers() {
@@ -83,19 +82,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void leftButtonClick(View view) {
-
-        changePoints("left");
+    public void buttonClick(View view) {
+        Button leftButton = (Button) findViewById(R.id.left_button);
+        Button rightButton = (Button) findViewById(R.id.right_button);
         TextView tv = (TextView) findViewById((R.id.points_field));
+
+        if (view == leftButton) {
+            changePoints("left");
+
+        } else if (view == rightButton) {
+            changePoints("right");
+        }
+
         tv.setText("Points: " + points);
         pickRandomNumbers();
-    }
 
-    public void rightButtonClick(View view) {
-
-        changePoints("right");
-        TextView tv = (TextView) findViewById((R.id.points_field));
-        tv.setText("Points: " + points);
-        pickRandomNumbers();
     }
 }
