@@ -9,7 +9,9 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+import stanford.androidlib.SimpleActivity;
+
+public class MainActivity extends SimpleActivity {
     private int points;
 
     @Override
@@ -37,15 +39,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        Button leftButton = findViewById(R.id.left_button);
-        leftButton.setText(Integer.toString(rand1));
-        Button rightButton = findViewById(R.id.right_button);
-        rightButton.setText(Integer.toString(rand2));
+        $B(R.id.left_button).setText(Integer.toString(rand1));
+        $B(R.id.right_button).setText(Integer.toString(rand2));
     }
 
     private int[] getRandoms() {
-        Button leftButton = findViewById(R.id.left_button);
-        Button rightButton = findViewById(R.id.right_button);
+        Button leftButton = $(R.id.left_button);
+        Button rightButton = $(R.id.right_button);
 
         String leftText = leftButton.getText().toString();
         String rightText = rightButton.getText().toString();
@@ -76,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String toastText = (previousPoints < points) ? "Nice!" : "Awww";
-        Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show();
+        toast(toastText);
     }
 
     public void buttonClick(View view) {
-        Button leftButton = (Button) findViewById(R.id.left_button);
-        Button rightButton = (Button) findViewById(R.id.right_button);
-        TextView tv = (TextView) findViewById((R.id.points_field));
+        Button leftButton = (Button) $(R.id.left_button);
+        Button rightButton = (Button) $(R.id.right_button);
+        TextView tv = (TextView) $((R.id.points_field));
 
         if (view == leftButton) {
             changePoints("left");
