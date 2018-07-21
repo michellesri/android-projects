@@ -37,15 +37,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        Button leftButton = (Button) findViewById(R.id.left_button);
+        Button leftButton = findViewById(R.id.left_button);
         leftButton.setText(Integer.toString(rand1));
-        Button rightButton = (Button) findViewById(R.id.right_button);
+        Button rightButton = findViewById(R.id.right_button);
         rightButton.setText(Integer.toString(rand2));
     }
 
     private int[] getRandoms() {
-        Button leftButton = (Button) findViewById(R.id.left_button);
-        Button rightButton = (Button) findViewById(R.id.right_button);
+        Button leftButton = findViewById(R.id.left_button);
+        Button rightButton = findViewById(R.id.right_button);
 
         String leftText = leftButton.getText().toString();
         String rightText = rightButton.getText().toString();
@@ -61,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
         int previousPoints = points;
         int rand1 = getRandoms()[0];
         int rand2 = getRandoms()[1];
-        if (string == "left") {
+        if (string.equals("left")) {
             if (rand1 > rand2) {
                 points++;
             } else {
                 points--;
             }
-        } else if (string == "right"){
+        } else if (string.equals("right")){
             if (rand2 > rand1) {
                 points++;
             } else {
@@ -75,11 +75,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if (previousPoints < points) {
-            Toast.makeText(this, "Nice!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Awww", Toast.LENGTH_SHORT).show();
-        }
+        String toastText = (previousPoints < points) ? "Nice!" : "Awww";
+        Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show();
     }
 
     public void buttonClick(View view) {
