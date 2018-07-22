@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RadioGroup
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <RadioButton
+            android:text="Leo"
+            android:id="@+id/leo_button"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioClick"/>
+
+        <RadioButton
+            android:text="Don"
+            android:id="@+id/don_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioClick"/>
+
+        <RadioButton
+            android:text="Raichu"
+            android:id="@+id/raichu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioClick"/>
+
+    </RadioGroup>
+
+        <ImageView
+            android:id="@+id/png"
+            android:layout_width="match_parent"
+            android:src="@drawable/tmnt_png"
+            android:layout_height="wrap_content" />
+</LinearLayout>
+
+
