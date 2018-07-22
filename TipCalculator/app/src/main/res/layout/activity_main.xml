@@ -91,7 +91,6 @@
         android:onClick="buttonClick"
         android:text="9"
         app:layout_constraintBaseline_toBaselineOf="@+id/button8"
-
         app:layout_constraintStart_toStartOf="@+id/button6" />
 
 
@@ -131,7 +130,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/twenty_percent"
         app:layout_constraintTop_toTopOf="@+id/button0"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.059"
+        android:background="#0b0"/>
 
     <Button
         android:id="@+id/clear_button"
@@ -161,7 +161,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/eighteen_percent"
-        app:layout_constraintVertical_bias="0.127" />
+        app:layout_constraintVertical_bias="0.127"
+        android:background="#0b0"/>
 
     <Button
         android:id="@+id/fifteen_percent"
@@ -176,7 +177,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/eighteen_percent"
         app:layout_constraintTop_toBottomOf="@+id/button0"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:background="#0b0"/>
 
     <TextView
         android:id="@+id/num_display"
@@ -197,7 +199,8 @@
         android:onClick="buttonClick"
         android:text="del"
         app:layout_constraintStart_toEndOf="@+id/button0"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
+        app:layout_constraintTop_toBottomOf="@+id/button9"
+        android:background="#a00"/>
 
 
 </android.support.constraint.ConstraintLayout>
