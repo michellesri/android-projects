@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Dictionary</string>
+    <string-array name="words">
+        <item>a</item>
+        <item>b</item>
+        <item>c</item>
+    </string-array>
+</resources>
