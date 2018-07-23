@@ -11,14 +11,21 @@
     <TextView
         android:textSize="28sp"
         android:text="Dictionary"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Spinner
+    <TextView
+        android:text="the word"
+        android:id="@+id/the_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ListView
         android:id="@+id/word_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </Spinner>
+    </ListView>
 
 </LinearLayout>
