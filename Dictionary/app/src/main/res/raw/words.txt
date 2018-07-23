@@ -1,0 +1,4 @@
+grass -> plant that is green
+bottle -> container for holding liquid
+chair -> thing that people sit on
+door -> entrance or exit to rooms
