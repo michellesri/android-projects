@@ -6,14 +6,17 @@ import android.view.View;
 
 import stanford.androidlib.SimpleActivity;
 
-public class AddWordActivity extends SimpleActivity {
+public class StartMenuActivity extends SimpleActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_word);
+        setContentView(R.layout.activity_start_menu);
     }
 
-    public void addWordClick(View view) {
+    public void playGameClick(View view) {
+    }
+
+    public void addANewWordClick(View view) {
     }
 }

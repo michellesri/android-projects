@@ -5,30 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".AddWordActivity">
+    android:gravity="center|top"
+    tools:context=".StartMenuActivity">
 
-
-    
-    <EditText
-        android:id="@+id/new_word"
-        android:text=""
-        android:hint="type new word here"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/new_definition"
-        android:onClick="addWordClick"
-        android:text=""
-        android:hint="type new definition here"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
-    <Button
-        android:text="Add"
+    <TextView
+        android:textSize="28sp"
+        android:text="Dictionary"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    
+
+    <Button
+        android:text="Play"
+        android:onClick="playGameClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Add Word"
+        android:onClick="addANewWordClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
