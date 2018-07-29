@@ -31,6 +31,11 @@ public class AddWordActivity extends SimpleActivity {
         output.close();
 
         // go back to start menu activity
+        // "return" new word/definition to StartMenuActivity
+        Intent goBack = new Intent();
+        goBack.putExtra("newword", newWord);
+        goBack.putExtra("newdefinition", newDefinition);
+        setResult(RESULT_OK, goBack);
         finish();
     }
 }
