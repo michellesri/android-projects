@@ -31,25 +31,8 @@ public class MainActivity extends SimpleActivity {
 
         dictionary = new HashMap<>();
         words = new ArrayList<>();
-        Scanner scan = new Scanner(getResources().openRawResource(R.raw.words));
-        while (scan.hasNextLine()) {
-            String line = scan.nextLine();
-            String[] parts = line.split("->");
-            println("parts: " + Arrays.toString(parts));
-            dictionary.put(parts[0], parts[1]);
-            println("dictionary writing to: " + dictionary);
-            words.add(parts[0]);
 
-        }
         chooseWords();
-
-
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-//                this, // activity
-//                android.R.layout.simple_list_item_1, // layout
-//                new ArrayList<String>(dictionary.keySet()) // array of elements to display
-//        );
-//        list.setAdapter(adapter);
 
         ListView list = $(R.id.word_list);
 
@@ -74,9 +57,35 @@ public class MainActivity extends SimpleActivity {
         });
     }
 
+    private void readFileHelper(Scanner scan) {
+        while (scan.hasNextLine()) {
+            String line = scan.nextLine();
+            String[] parts = line.split("->");
+            println("parts: " + Arrays.toString(parts));
+            dictionary.put(parts[0], parts[1]);
+            println("dictionary writing to: " + dictionary);
+            words.add(parts[0]);
+        }
+    }
+
+    private void readFileData() {
+        Scanner scan = new Scanner(getResources().openRawResource(R.raw.words));
+        readFileHelper(scan);
+        try {
+            Scanner scan2 = new Scanner(openFileInput("added_words.txt"));
+            readFileHelper(scan2);
+        } catch (Exception e) {
+            // do nothing
+            // just don't crash
+        }
+
+    }
+
+
     private void chooseWords() {
         // pick the word
         Random rand = new Random();
+        readFileData();
         int randomIndex = rand.nextInt(words.size());
         String theWord = words.get(randomIndex);
         String theDefinition = dictionary.get(theWord);
