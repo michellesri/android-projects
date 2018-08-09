@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     private List<Character> guessedCharacters;
     private int currentHangmanIndex = 0;
 
+    // map of correct characters and their indices
+    private HashMap<Character, Integer> correctCharAndIndex;
+    private List<Character> incorrectCharacters;
+
     private TextView targetWord;
     private TextView lettersGuessed;
     private EditText userInput;
@@ -43,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
         phrase = PhraseGenerator.generatePhrase();
         guessedCharacters = new ArrayList<>();
         guessed = new ArrayList<>();
+
+        correctCharAndIndex = new HashMap<>();
+        incorrectCharacters = new ArrayList<>();
 
         targetWord = findViewById(R.id.target_word_txt);
         lettersGuessed = findViewById(R.id.guessed_letters_txt);
@@ -93,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
     private void guess(char guess) {
         userInput.setText("");
         if (guessedCharacters.contains(guess)) {
+            // character has already been guessed
             return;
         }
         guessedCharacters.add(guess);
@@ -102,11 +111,13 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < phraseArray.length; i++) {
             if (guess == Character.toLowerCase(phraseArray[i])) {
                 guessed.set(i, true);
+                correctCharAndIndex.put(guess, i);
                 found = true;
             }
         }
         if (!found) {
             currentHangmanIndex++;
+            incorrectCharacters.add(guess);
         }
 
         if (hasWon()) {
@@ -127,4 +138,32 @@ public class MainActivity extends AppCompatActivity {
     private boolean hasLost() {
         return currentHangmanIndex >= 6;
     }
+
+    private Character bestGuess() {
+        List<Character> guessedCharactersCopy = new ArrayList<>();
+        ArrayList<String> allPhrases = PhraseGenerator.allPhrases;
+        ArrayList<String> allPhrasesCopy = new ArrayList<>(allPhrases);
+        guessedCharactersCopy.addAll(guessedCharacters);
+        int correctWordLength = phrase.length();
+        for (String word : allPhrases) {
+            for (char character : incorrectCharacters) {
+                // remove all words that contain incorrectly guessed letters
+                if (word.contains(Character.toString(character))) {
+                    allPhrasesCopy.remove(word);
+                }
+            }
+            // remove all words that are not the correct length
+            if (word.length() != correctWordLength) {
+                allPhrasesCopy.remove(word);
+            }
+        }
+
+    }
 }
+
+// all the correct guesses, get the index and remove the words that don't have that letter at that index
+// remove all the words that have the incorrectly guessed letters --
+// remove the words that are longer or shorter --
+// of the words left, get the letter with the most occurrences
+
+

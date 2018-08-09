@@ -1,19 +1,28 @@
 package com.github.michellesri.hangman;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class PhraseGenerator {
 
-    private static String[] allPhrases = new String[] {
-            "Here is a cookie",
-            "Dog chases after a cat",
-            "You hit the jackpot",
-            "Cereal is the best"
-    };
+    public static ArrayList<String> allPhrases = new ArrayList<String>(){};
     private static Random random = new Random(System.currentTimeMillis());
 
     public static String generatePhrase() {
-        int index = Math.abs(random.nextInt()) % allPhrases.length;
-        return allPhrases[index];
+        allPhrases.add("cookie");
+        allPhrases.add("dog");
+        allPhrases.add("chases");
+        allPhrases.add("after");
+        allPhrases.add("cat");
+        allPhrases.add("you");
+        allPhrases.add("hit");
+        allPhrases.add("the");
+        allPhrases.add("jackpot");
+        allPhrases.add("cereal");
+        allPhrases.add("best");
+        int index = Math.abs(random.nextInt()) % allPhrases.size();
+        return allPhrases.get(index);
     }
+
 }
