@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private int currentHangmanIndex = 0;
 
     // map of correct characters and their indices
-    private HashMap<Character, Integer> correctCharAndIndex;
+    private HashMap<Character, List<Integer>> correctCharAndIndex;
     private List<Character> incorrectCharacters;
 
     private TextView targetWord;
@@ -140,23 +141,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Character bestGuess() {
-        List<Character> guessedCharactersCopy = new ArrayList<>();
-        ArrayList<String> allPhrases = PhraseGenerator.allPhrases;
+        List<String> allPhrases = PhraseGenerator.allPhrases;
         ArrayList<String> allPhrasesCopy = new ArrayList<>(allPhrases);
-        guessedCharactersCopy.addAll(guessedCharacters);
         int correctWordLength = phrase.length();
+
+        // remove all words that contain incorrectly guessed letters
         for (String word : allPhrases) {
             for (char character : incorrectCharacters) {
-                // remove all words that contain incorrectly guessed letters
                 if (word.contains(Character.toString(character))) {
                     allPhrasesCopy.remove(word);
                 }
             }
+
             // remove all words that are not the correct length
             if (word.length() != correctWordLength) {
                 allPhrasesCopy.remove(word);
             }
+
+            // get index of correct letters and remove words that don't have that letter at that index
+            for (Map.Entry<Character, Integer> entry : correctCharAndIndex.entrySet()) {
+                Character letter = entry.getKey();
+                Object index = entry.getValue();
+
+                if (word.indexOf(letter) == )
+
+            }
         }
+
+        return 'c';
 
     }
 }
@@ -167,3 +179,10 @@ public class MainActivity extends AppCompatActivity {
 // of the words left, get the letter with the most occurrences
 
 
+// questions :
+
+    // allphrases copy?
+    // need to make separate allphrases loops? need to check if they exist in the copy?
+    // looping through hashmap, what if a character appears twice in a word. are all the indices stored in hashmap?
+
+// add things to list instead because correctCharAndIndex maps from Char, List<indices>
