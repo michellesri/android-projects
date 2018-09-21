@@ -1,1 +1,1 @@
-CS194a: Android App Development class at Stanford 
+CS193a: Android App Development class at Stanford 
